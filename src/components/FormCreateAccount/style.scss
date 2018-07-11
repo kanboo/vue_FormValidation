@@ -1,5 +1,122 @@
+@import "@/sass/public/_variable.scss";
 @import "@/sass/public/_mixin.scss";
 
-.formCreateAccount{
+.formCreateAccount {
+  width: 100%;
+  max-width: 460px;
+  margin-top: 24px;
 
+  .validation {
+    // @include outline(blue);
+
+    // width: 100%;
+  }
+
+  .formGroup {
+    // @include outline(blue);
+    @include flex(flex-start);
+
+    position: relative;
+    flex-direction: column;
+
+    + .formGroup {
+      margin-top: 24px;
+    }
+
+    label {
+      margin-bottom: 8px;
+      letter-spacing: 0;
+      color: #000000;
+      font-family: Roboto;
+      font-size: $font-size-form;
+      font-weight: 400;
+    }
+
+    input {
+      width: 100%;
+      height: 52px;
+      padding: 12px 50px 12px 20px;
+      text-align: left;
+      letter-spacing: 0;
+      color: #999999;
+      border: 2px solid #000000;
+      border-radius: 8px;
+      background: #ffffff;
+      font-family: Roboto;
+      font-size: $font-size-form;
+      font-weight: 400;
+      line-height: $font-size-form;
+    }
+
+    &.invalid {
+      &::after {
+        content: "\f071";
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        color: #f5a623;
+        font-family: "Font Awesome 5 Free";
+        font-size: 1.3rem;
+        font-weight: 900;
+      }
+
+      input {
+        border: 2px solid $color-orange;
+        border-radius: 8px;
+        background: #ffffff;
+      }
+
+      .errorMsg {
+        position: absolute;
+        bottom: 1rem;
+        left: calc(100% + 16px);
+        display: inline-block;
+        height: 26px;
+        padding: 8px 6px;
+        text-align: left;
+        white-space: nowrap;
+        letter-spacing: 0;
+        color: #ffffff;
+        border-radius: 4px;
+        background: #f5a623;
+        font-family: Roboto;
+        font-size: $font-size-lable;
+        font-weight: 400;
+        line-height: $font-size-lable;
+
+        &::before {
+          @include size(8px);
+
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: -4px;
+          transform: translateY(-50%) rotate(-45deg);
+          background: #f5a623;
+        }
+      }
+    }
+  }
+
+  .bt_submit {
+    width: 100%;
+    height: 52px;
+    margin-top: 40px;
+    text-align: center;
+    color: #ffffff;
+    border: 2px solid $color-blue-light;
+    border-radius: 8px;
+    outline: 0;
+    background: $color-blue-light;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25px;
+
+    &:hover {
+      border: 2px solid $color-blue-light;
+      border-radius: 8px;
+      background: $color-blue-dark;
+    }
+  }
 }

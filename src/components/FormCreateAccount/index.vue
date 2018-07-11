@@ -4,7 +4,22 @@ export default {
   components: {},
   data() {
     return {
-      title: 'Vue - Porject'
+      CreateAccount: {
+        email: '',
+        password: '',
+        password2: ''
+      }
+    }
+  },
+  methods: {
+    submit() {
+      this.$validator.validate().then(result => {
+        if (result) {
+          this.$emit('submitSub', this.CreateAccount)
+        } else {
+          // do stuff if not valid.
+        }
+      })
     }
   }
 }

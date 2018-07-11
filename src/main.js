@@ -4,15 +4,19 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+
 import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+
+import VeeValidate from 'vee-validate'
+import zhTW from 'vee-validate/dist/locale/zh_TW'
 
 import App from './App'
 import router from './router'
 import store from './store'
 
-// import '@/sass/all.scss'
-
-import 'element-ui/lib/theme-chalk/index.css'
+VeeValidate.Validator.localize('zh_TW', zhTW)
+Vue.use(VeeValidate)
 Vue.use(VueAxios, axios)
 Vue.use(Vuex)
 Vue.use(ElementUI)

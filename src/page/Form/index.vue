@@ -72,8 +72,10 @@ export default {
     }
   },
   methods: {
-    next() {
-      this.currStep = this.currStep + 1
+    submitMain(data) {
+      console.log('submitMain', data)
+
+      this.currStep = this.currStep > 3 ? 1 : this.currStep + 1
     }
   }
 }
