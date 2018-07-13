@@ -1,4 +1,5 @@
 <script>
+import { mapGetters } from 'vuex'
 import FormCreateAccount from '@/components/FormCreateAccount'
 import FormGeneralInfomation from '@/components/FormGeneralInfomation'
 import FormUpdateProfilePicture from '@/components/FormUpdateProfilePicture'
@@ -14,7 +15,6 @@ export default {
   },
   data() {
     return {
-      currStep: 1,
       validationSteps: [
         {
           title: 'Create Account',
@@ -40,43 +40,11 @@ export default {
           PaymentMethod: 'CreateAccount',
           component: 'FormPaymentMethod'
         }
-      ],
-      formData: {
-        CreateAccount: {
-          email: '',
-          password: '',
-          comfirmpassword: ''
-        },
-        GeneralInfomation: {
-          name: '',
-          phone: '',
-          birthdate: '',
-          address: {
-            city: '',
-            dist: '',
-            detail: ''
-          }
-        },
-        ProfilePicture: {
-          file: []
-        },
-        PaymentMethod: {
-          cardNumber: '',
-          cardholderName: '',
-          bankName: '',
-          cvv: '',
-          expireMonth: '',
-          expireDay: ''
-        }
-      }
+      ]
     }
   },
-  methods: {
-    submitMain(data) {
-      console.log('submitMain', data)
-
-      this.currStep = this.currStep > 3 ? 1 : this.currStep + 1
-    }
+  computed: {
+    ...mapGetters(['currStep', 'formData'])
   }
 }
 </script>

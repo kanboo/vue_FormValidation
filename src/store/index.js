@@ -7,61 +7,108 @@ import axios from 'axios'
 Vue.use(Vuex)
 
 const state = {
-  // totalCost: 100,
-  // netIncome: 200
-}
-
-/**
-computed:{
-  ...mapGetters(['showLoading','isLogin','userName'])
-},
- */
-const getters = {
-  // totalCost: state => state.totalCost,
-  // netIncome: state => state.netIncome
-}
-
-// vue 裡用 this.$store.commit('showLoading' , true)
-// mutation 必須是同步函數, 很重要
-const mutations = {
-  // totalCost(state, value) {
-  //   state.totalCost = value;
-  // },
-  // netIncome(state, value) {
-  //   state.netIncome = value;
-  // }
+  currStep: 1,
+  formData: {
+    CreateAccount: {
+      email: 'Kanboo',
+      password: '',
+      comfirmpassword: ''
+    },
+    GeneralInfomation: {
+      name: '',
+      phone: '',
+      birthdate: '',
+      address: {
+        city: '',
+        dist: '',
+        detail: ''
+      }
+    },
+    ProfilePicture: {
+      file: []
+    },
+    PaymentMethod: {
+      cardNumber: '',
+      cardholderName: '',
+      bankName: '',
+      cvv: '',
+      expireMonth: '',
+      expireDay: ''
+    }
+  }
 }
 
 /*
-vue 裡用 this.$store.dispatch('showLoading' , true)
-methods(){
-  ...mapActions(['showLoading','count']),
+vue 裡用
+import { mapGetters } from 'vuex'
+// 方法1(不推)
+this.$store.state.showLoading
+// 方法2(建議)
+computed: {
+  ...mapGetters(['showLoading', 'isLogin', 'userName', 'formData'])
+},
+ */
+const getters = {
+  currStep: state => state.currStep,
+  formData: state => state.formData
 }
+
+/*
+vue 裡用
+import { mapMutations } from 'vuex'
+// 方法1(不推)
+this.$store.commit('SHOWLOADING', true)
+// 方法2(建議)
+methods: {
+  ...mapMutations(['SHOWLOADING', 'ISLOGIN', 'FORMDATA'])
+}
+
+mutation 必須是「同步」函數, 很重要
+*/
+const mutations = {
+  CURRSTEP(state, value) {
+    state.currStep = value
+  },
+  FORMDATA(state, { name, value }) {
+    state.formData[name] = value
+  }
+}
+
+/*
+vue 裡用
+import { mapActions } from 'vuex'
+// 方法1(不推)
+this.$store.dispatch('loading', true)
+// 方法2(建議)
+methods: {
+  ...mapActions(['loading','login']),
+}
+
 Action 類似於 mutation，不同在於：
 Action 提交的是 mutation，而不是直接變更狀態。
 Action 可以包含任意異步操作。
 Action 可以非同步，但一定只能 return Promise
 */
 const actions = {
-  showLoading({ commit }, value) {
-    commit('showLoading', value)
+  loading({ commit }, value) {
+    commit('SHOWLOADING', value)
   },
   login({ commit }, { email, password }) {
     return new Promise(resolve => {
-      commit('showLoading', true)
+      commit('SHOWLOADING', true)
       console.log('action login', email, password)
       setTimeout(async () => {
         const { data } = await axios.get('api.txt')
         if (data.status === 'ok') {
-          commit('userName', data.name)
+          commit('USERNAME', data.name)
           // action 不應該直接修改 state 的值,
           // 要使用 commit 的方式呼叫 mutations 去改值
           // 以下寫法在嚴格模式會發生錯誤
           // state.isLogin = true;
-          commit('isLogin', true)
+          commit('ISLOGIN', true)
         }
         resolve(data)
-        commit('showLoading', false)
+        commit('SHOWLOADING', false)
       }, 1000)
     })
   }
@@ -84,5 +131,5 @@ export default new Vuex.Store({
   getters,
   actions,
   mutations,
-  strict: true
+  strict: true // 嚴格模式
 })
