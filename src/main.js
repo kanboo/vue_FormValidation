@@ -15,7 +15,17 @@ import App from './App'
 import router from './router'
 import store from './store'
 
+VeeValidate.Validator.extend('phone', {
+  messages: {
+    zh_TW: field => field + '必須是10位手機號碼'
+  },
+  validate: value => {
+    return /^09\d{8}$/.test(value)
+  }
+})
+
 VeeValidate.Validator.localize('zh_TW', zhTW)
+
 Vue.use(VeeValidate)
 Vue.use(VueAxios, axios)
 Vue.use(Vuex)

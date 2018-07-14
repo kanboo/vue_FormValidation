@@ -7,17 +7,48 @@ import axios from 'axios'
 Vue.use(Vuex)
 
 const state = {
-  currStep: 1,
+  currStep: 5,
+  validationSteps: [
+    {
+      title: 'Create Account',
+      desc: 'Glad to see you here!',
+      data: 'CreateAccount',
+      component: 'FormCreateAccount'
+    },
+    {
+      title: 'General Information',
+      desc: 'Tell us who you are!',
+      data: 'GeneralInformation',
+      component: 'FormGeneralInformation'
+    },
+    {
+      title: 'Update Profile Picture',
+      desc: 'We wanna know you more!',
+      data: 'ProfilePicture',
+      component: 'FormUpdateProfilePicture'
+    },
+    {
+      title: 'Payment Method',
+      desc: 'Add your credit card information!',
+      data: 'PaymentMethod',
+      component: 'FormPaymentMethod'
+    },
+    {
+      title: 'Congratulations',
+      desc: 'Now you’re one of us!',
+      component: 'formCongratulations'
+    }
+  ],
   formData: {
     CreateAccount: {
-      email: 'Kanboo',
+      email: '',
       password: '',
       comfirmpassword: ''
     },
-    GeneralInfomation: {
+    GeneralInformation: {
       name: '',
       phone: '',
-      birthdate: '',
+      birthDate: '',
       address: {
         city: '',
         dist: '',
@@ -66,11 +97,41 @@ methods: {
 mutation 必須是「同步」函數, 很重要
 */
 const mutations = {
-  CURRSTEP(state, value) {
+  SETCURRSTEP(state, value) {
     state.currStep = value
   },
-  FORMDATA(state, { name, value }) {
+  SETFORMDATA(state, { name, value }) {
     state.formData[name] = value
+  },
+  RESETFORMDATA(state, value) {
+    state.formData = {
+      CreateAccount: {
+        email: '',
+        password: '',
+        comfirmpassword: ''
+      },
+      GeneralInformation: {
+        name: '',
+        phone: '',
+        birthDate: '',
+        address: {
+          city: '',
+          dist: '',
+          detail: ''
+        }
+      },
+      ProfilePicture: {
+        file: []
+      },
+      PaymentMethod: {
+        cardNumber: '',
+        cardholderName: '',
+        bankName: '',
+        cvv: '',
+        expireMonth: '',
+        expireDay: ''
+      }
+    }
   }
 }
 

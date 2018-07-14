@@ -1,0 +1,27 @@
+@import "@/sass/public/_variable.scss";
+@import "@/sass/public/_mixin.scss";
+
+.formCongratulations {
+  @include flex(center);
+
+  flex-direction: column;
+  width: 100%;
+  max-width: 460px;
+  margin-top: 24px;
+
+  .fa-smile {
+    color: #bee1ff;
+    // background: #bee1ff;
+    font-size: 15rem;
+  }
+
+  a {
+    margin-top: 40px;
+    text-align: center;
+    color: #0275d8;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: italic;
+    line-height: 25px;
+  }
+}

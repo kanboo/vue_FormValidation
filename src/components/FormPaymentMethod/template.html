@@ -1,3 +1,94 @@
 <div class="formPaymentMethod">
-  FormPaymentMethod
+
+  <div class="validation">
+    <div class="block b1">
+      <div class="formGroup"
+           :class="{ 'invalid' : errors.has('cardNumber')}">
+        <label for="cardNumber"> Card Number </label>
+        <input type="text"
+               name="cardNumber"
+               id="cardNumber"
+               v-validate="'required'"
+               v-model="PaymentMethod.cardNumber"
+               placeholder="1234 5678 9012 3456">
+        <span class="errorMsg">{{ errors.first('cardNumber') }}</span>
+      </div>
+    </div>
+
+    <div class="block b2">
+      <div class="formGroup"
+           :class="{ 'invalid' : errors.has('cardholderName')}">
+        <label for="cardholderName"> Cardholder Name </label>
+        <input type="text"
+               name="cardholderName"
+               id="cardholderName"
+               v-validate="'required'"
+               v-model="PaymentMethod.cardholderName"
+               placeholder="EXAMPLE NAME">
+      </div>
+
+      <div class="formGroup"
+           :class="{ 'invalid' : errors.has('bankName')}">
+        <label for="bankName"> Bank Name </label>
+        <input type="text"
+               name="bankName"
+               id="bankName"
+               v-validate="'required'"
+               v-model="PaymentMethod.bankName"
+               placeholder="EXAMPLE BANK">
+      </div>
+    </div>
+
+    <div class="block b3">
+      <div class="formGroup"
+           :class="{ 'invalid' : errors.has('cvv')}">
+        <label for="cvv"> CVV </label>
+        <input type="text"
+               name="cvv"
+               id="cvv"
+               v-validate="'required'"
+               v-model="PaymentMethod.cvv"
+               placeholder="123">
+      </div>
+
+      <div class="formGroup"
+           :class="{ 'invalid' : errors.has('month')}">
+        <label for="expireMonth"> Expire Date </label>
+        <el-select v-model="PaymentMethod.expireMonth"
+                   class="date"
+                   name="month"
+                   v-validate="'required'"
+                   placeholder="MM">
+          <el-option v-for="item in 12"
+                     :key="item"
+                     :label="item"
+                     :value="item">
+          </el-option>
+        </el-select>
+      </div>
+
+      <div class="formGroup"
+           :class="{ 'invalid' : errors.has('day')}">
+        <el-select v-model="PaymentMethod.expireDay"
+                   class="date"
+                   name="day"
+                   v-validate="'required'"
+                   placeholder="DD">
+          <el-option v-for="item in 31"
+                     :key="item"
+                     :label="item"
+                     :value="item">
+          </el-option>
+        </el-select>
+
+      </div>
+    </div>
+
+    <button class="bt_submit"
+            @click="submit">
+      DONE
+    </button>
+
+  </div>
+
 </div>

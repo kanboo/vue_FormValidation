@@ -1,50 +1,25 @@
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 import FormCreateAccount from '@/components/FormCreateAccount'
-import FormGeneralInfomation from '@/components/FormGeneralInfomation'
+import FormGeneralInformation from '@/components/FormGeneralInformation'
 import FormUpdateProfilePicture from '@/components/FormUpdateProfilePicture'
 import FormPaymentMethod from '@/components/FormPaymentMethod'
+import FormCongratulations from '@/components/FormCongratulations'
 
 export default {
   name: 'Form',
   components: {
     FormCreateAccount,
-    FormGeneralInfomation,
+    FormGeneralInformation,
     FormUpdateProfilePicture,
-    FormPaymentMethod
+    FormPaymentMethod,
+    FormCongratulations
   },
   data() {
-    return {
-      validationSteps: [
-        {
-          title: 'Create Account',
-          desc: 'Glad to see you here!',
-          data: 'CreateAccount',
-          component: 'FormCreateAccount'
-        },
-        {
-          title: 'General Infomation',
-          desc: 'Tell us who you are!',
-          data: 'GeneralInfomation',
-          component: 'FormGeneralInfomation'
-        },
-        {
-          title: 'Update Profile Picture',
-          desc: 'We wanna know you more!',
-          data: 'ProfilePicture',
-          component: 'FormUpdateProfilePicture'
-        },
-        {
-          title: 'Payment Method',
-          desc: 'Add your credit card infomation! ',
-          PaymentMethod: 'CreateAccount',
-          component: 'FormPaymentMethod'
-        }
-      ]
-    }
+    return {}
   },
   computed: {
-    ...mapGetters(['currStep', 'formData'])
+    ...mapState(['currStep', 'validationSteps'])
   }
 }
 </script>

@@ -2,12 +2,11 @@
   <div class="headerbox"></div>
 
   <el-steps :active="currStep">
-    <el-step title="步骤 1"></el-step>
-    <el-step title="步骤 2"></el-step>
-    <el-step title="步骤 3"></el-step>
-    <el-step title="步骤 4"></el-step>
+    <el-step></el-step>
+    <el-step></el-step>
+    <el-step></el-step>
+    <el-step></el-step>
   </el-steps>
-
 
   <h1 class="title">
     {{ validationSteps[currStep-1].title }}
@@ -18,8 +17,7 @@
               mode="out-in"
               appear>
 
-    <div :is="validationSteps[currStep-1].component"
-         v-on:submitSub="submitMain"></div>
+    <div :is="validationSteps[currStep-1].component"></div>
 
   </transition>
 

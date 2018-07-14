@@ -48,6 +48,10 @@
       line-height: $font-size-form;
     }
 
+    .errorMsg {
+      display: none;
+    }
+
     &.invalid {
       &::after {
         content: "\f071";

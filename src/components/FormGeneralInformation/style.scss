@@ -1,7 +1,7 @@
 @import "@/sass/public/_variable.scss";
 @import "@/sass/public/_mixin.scss";
 
-.formPaymentMethod {
+.formGeneralInformation {
   width: 100%;
   max-width: 460px;
   margin-top: 24px;
@@ -10,21 +10,13 @@
     margin-top: 24px;
   }
 
-  .b2,.b3 {
+  .b2 {
     @include flex(space-between);
 
     align-items: flex-end;
-  }
 
-  .b2 {
     .formGroup {
       width: 220px;
-    }
-  }
-
-  .b3 {
-    .formGroup {
-      width: 140px;
     }
   }
 
@@ -67,6 +59,10 @@
       font-size: $font-size-form;
       font-weight: 400;
       line-height: $font-size-form;
+    }
+
+    .errorMsg {
+      display: none;
     }
 
     &.invalid {

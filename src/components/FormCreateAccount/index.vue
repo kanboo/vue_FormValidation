@@ -14,13 +14,12 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['CURRSTEP', 'FORMDATA']),
+    ...mapMutations(['SETCURRSTEP', 'SETFORMDATA']),
     submit() {
       this.$validator.validate().then(result => {
         if (result) {
-          // this.$emit('submitSub', this.CreateAccount)
-          this.CURRSTEP(2)
-          this.FORMDATA({
+          this.SETCURRSTEP(2)
+          this.SETFORMDATA({
             name: 'CreateAccount',
             value: this.CreateAccount
           })

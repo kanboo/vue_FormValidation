@@ -2,35 +2,34 @@
 import { mapMutations } from 'vuex'
 
 export default {
-  name: 'formPaymentMethod',
+  name: 'formGeneralInformation',
   components: {},
   data() {
     return {
-      PaymentMethod: {
-        cardNumber: '',
-        cardholderName: '',
-        bankName: '',
-        cvv: '',
-        expireMonth: '',
-        expireDay: ''
+      GeneralInformation: {
+        name: '',
+        phone: '',
+        birthdate: '',
+        address: {
+          city: '',
+          dist: '',
+          detail: ''
+        }
       }
     }
   },
   methods: {
     ...mapMutations(['SETCURRSTEP', 'SETFORMDATA']),
     submit() {
-      console.log('1111111')
-
       this.$validator.validate().then(result => {
         if (result) {
-          this.SETCURRSTEP(5)
+          this.SETCURRSTEP(3)
           this.SETFORMDATA({
-            name: 'PaymentMethod',
-            value: this.PaymentMethod
+            name: 'GeneralInformation',
+            value: this.GeneralInformation
           })
         } else {
           // do stuff if not valid.
-          console.log('Error')
         }
       })
     }

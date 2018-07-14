@@ -7,7 +7,6 @@
       <input type="email"
              name="email"
              id="email"
-             data-vv-validate-on="none"
              v-validate="'required|email'"
              v-model="CreateAccount.email"
              placeholder="example@email.com">
@@ -18,10 +17,10 @@
          :class="{ 'invalid' : errors.has('password')}">
       <label for="password">Password</label>
       <input type="password"
+             class="password"
              name="password"
              id="password"
              data-vv-as="密碼"
-             data-vv-validate-on="none"
              v-validate="'required'"
              v-model="CreateAccount.password"
              placeholder="●●●●●●●●">
@@ -32,10 +31,10 @@
          :class="{ 'invalid' : errors.has('password2')}">
       <label for="password2">Comfirm Password</label>
       <input type="password"
+             class="password"
              name="password2"
              id="password2"
              data-vv-as="確認密碼"
-             data-vv-validate-on="none"
              v-validate="{'required': 'true', 'is': CreateAccount.password}"
              v-model="CreateAccount.password2"
              placeholder="●●●●●●●●">
@@ -43,6 +42,8 @@
     </div>
 
     <button class="bt_submit"
-            @click="submit">SUBMIT & NEXT</button>
+            @click="submit">
+      SUBMIT & NEXT
+    </button>
   </div>
 </div>

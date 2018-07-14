@@ -1,0 +1,91 @@
+<div class="formGeneralInformation">
+
+  <div class="validation">
+    <div class="block b2">
+      <div class="formGroup">
+        <label for="name">
+          Name
+          <span>(optional) </span>
+        </label>
+        <input type="text"
+               name="name"
+               id="name"
+               v-model="GeneralInformation.name"
+               placeholder="Example Name">
+      </div>
+
+      <div class="formGroup"
+           :class="{ 'invalid' : errors.has('phone')}">
+        <label for="phone">Phone*</label>
+        <input type="text"
+               name="phone"
+               id="phone"
+               v-validate="'required|phone'"
+               v-model="GeneralInformation.phone"
+               placeholder="0912 345 678">
+        <span class="errorMsg">{{ errors.first('phone') }}</span>
+      </div>
+    </div>
+
+    <div class="block b1">
+      <div class="formGroup">
+        <label for="birthDate">Birth Date
+          <span>(optional)</span>
+        </label>
+        <el-date-picker v-model="GeneralInformation.birthDate"
+                        type="date"
+                        class="birthDate"
+                        placeholder="YYYY/MM/DD">
+        </el-date-picker>
+        <span class="errorMsg">{{ errors.first('birthDate') }}</span>
+      </div>
+    </div>
+
+    <div class="block b2">
+
+      <div class="formGroup"
+           :class="{ 'invalid' : errors.has('city')}">
+        <label for="city"> Address </label>
+        <input type="text"
+               name="city"
+               id="city"
+               v-validate="'required'"
+               v-model="GeneralInformation.address.city"
+               placeholder="City">
+        <!-- <span class="errorMsg">{{ errors.first('city') }}</span> -->
+      </div>
+
+      <div class="formGroup"
+           :class="{ 'invalid' : errors.has('dist')}">
+        <input type="text"
+               name="dist"
+               id="dist"
+               v-validate="'required'"
+               v-model="GeneralInformation.address.dist"
+               placeholder="Dist">
+        <!-- <span class="errorMsg">{{ errors.first('dist') }}</span> -->
+      </div>
+    </div>
+
+    <div class=" block b1">
+      <div class="formGroup"
+           :class="{ 'invalid' : errors.has('detail')}">
+        </label>
+        <input type="text"
+               name="detail"
+               id="detail"
+               v-validate="'required'"
+               v-model="GeneralInformation.address.detail"
+               placeholder="Address Detail">
+        <span class="errorMsg">REQUIRED FILED</span>
+      </div>
+    </div>
+
+    <button class="bt_submit"
+            @click="submit">
+      SUBMIT & NEXT
+    </button>
+
+  </div>
+
+</div>
