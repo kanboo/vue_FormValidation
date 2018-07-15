@@ -7,7 +7,7 @@ import axios from 'axios'
 Vue.use(Vuex)
 
 const state = {
-  currStep: 5,
+  currStep: 1,
   validationSteps: [
     {
       title: 'Create Account',

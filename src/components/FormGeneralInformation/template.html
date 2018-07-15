@@ -20,7 +20,7 @@
         <input type="text"
                name="phone"
                id="phone"
-               v-validate="'required|phone'"
+               v-validate="'required'"
                v-model="GeneralInformation.phone"
                placeholder="0912 345 678">
         <span class="errorMsg">{{ errors.first('phone') }}</span>

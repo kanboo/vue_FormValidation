@@ -6,6 +6,99 @@
   max-width: 460px;
   margin-top: 24px;
 
+  .upload {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    width: 100%;
+    max-width: 460px;
+    height: 140px;
+    margin-top: 25px;
+    border: 2px solid #000000;
+    border-radius: 8px;
+
+    input {
+      width: 100%;
+      height: 100%;
+      padding-left: 100%;
+      cursor: pointer;
+      opacity: 0;
+    }
+
+    &__icon {
+      position: absolute;
+      left: 70px;
+      flex: 1;
+      font-size: 60px;
+    }
+
+    &__info {
+      position: absolute;
+      left: 170px;
+      flex: 3;
+
+      &__title {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24px;
+      }
+
+      &__subtitle {
+        margin-top: 5px;
+        letter-spacing: 1px;
+        font-size: 14px;
+        font-weight: 30;
+        line-height: 24px;
+      }
+    }
+
+    &__images {
+      @include flex(flex-start);
+
+      width: 100%;
+      max-width: 460px;
+
+      .image:not(:last-child) {
+        margin-right: 20px;
+      }
+      .image {
+        position: relative;
+        overflow: hidden;
+        margin-top: 24px;
+        border: none;
+        &:hover {
+          .image-delete {
+            height: 52px;
+            opacity: 1;
+          }
+        }
+        img {
+          width: 140px;
+          height: 150px;
+          border-radius: 5px;
+        }
+        &__delete {
+          position: absolute;
+          bottom: 3px;
+          display: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 140px;
+          height: 0;
+          cursor: pointer;
+          transition: all .3s;
+          opacity: 0;
+          color: #ffffff;
+          border-radius: 0 0 8px 8px;
+          background-color: #000000;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
   .bt_submit {
     width: 100%;
     height: 52px;

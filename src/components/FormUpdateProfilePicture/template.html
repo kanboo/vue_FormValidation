@@ -1,16 +1,31 @@
 <div class="formUpdateProfilePicture">
-  FormUpdateProfilePicture
-  <el-upload class="upload-demo"
-             action="https://jsonplaceholder.typicode.com/posts/"
-             :on-preview="handlePreview"
-             :on-remove="handleRemove"
-             :file-list="fileList2"
-             list-type="picture">
-    <el-button size="small"
-               type="primary">点击上传</el-button>
-    <div slot="tip"
-         class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-  </el-upload>
+
+  <div class="upload">
+    <i class="upload__icon fas fa-images"></i>
+    <div class="upload__info">
+      <div class="upload__info-title">
+        UPLOAD UP TO 3 PHOTOS
+      </div>
+      <div class="upload__info-subtitle">
+        MAXIMUM SIZE: 800KB
+      </div>
+    </div>
+    <input type="file"
+           accept="image/jpeg, image/png"
+           @change="fileSelected">
+  </div>
+
+  <div class="upload__images">
+    <div class="image"
+         v-if="ProfilePicture.file[index]"
+         v-for="(item, index) in 3">
+      <img :src="ProfilePicture.file[index]">
+      <div class="image__delete"
+           @click="ProfilePicture.file.splice(index, 1)">
+        <i class="fas fa-trash-alt"></i>
+      </div>
+    </div>
+  </div>
 
   <button class="bt_submit"
           @click="submit">
